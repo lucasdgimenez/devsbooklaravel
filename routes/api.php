@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,13 +22,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 */
+
+/*
 Route::get('/401', 'AuthController@unauthorized')->name('login');
 
 Route::post('/auth/login', 'AuthController@login');
 Route::post('/auth/logout', 'AuthController@logout');
 Route::post('/auth/refresh', 'AuthController@refresh');
-
-Route::post('/user', 'AuthController@create');
+*/
+Route::post('/user', [AuthController::class, 'create']);
+/*
 Route::put('/user', 'AuthController@update');
 Route::post('/user/avatar', 'UserController@updateAvatar');
 Route::post('/user/cover', 'UserController@updateCover');
@@ -46,3 +49,4 @@ Route::post('/post/{id}/like', 'PostController@like');
 Route::post('/post/{id}/comment', 'PostController@comment');
 
 Route::get('/search', 'SearchController@search');
+*/
